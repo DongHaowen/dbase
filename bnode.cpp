@@ -30,6 +30,13 @@ bnode* zig(bnode* r){
     bnode* tmp = r->left->right;
     r->left->right = r;
     r->left = tmp;
+    // 切换根节点
+    if(r->parent->left == r)
+        r->parent->left = r->left;
+    else
+        r->parent->right = r->left;
+    r->left->parent = r->parent;
+    r->parent = r->left;
     return r->left;
 }
 
@@ -38,6 +45,13 @@ bnode* zag(bnode* r){
     bnode* tmp = r->right->left;
     r->right->left = r;
     r->right = tmp;
+    // 切换根节点
+    if(r->parent->left == r)
+        r->parent->left = r->right;
+    else
+        r->parent->right = r->right;
+    r->right->parent = r->parent;
+    r->parent = r->right;
     return r->right;
 }
 

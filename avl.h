@@ -11,7 +11,7 @@ bool balanced(bnode* x){
 }
 
 int balance_fac(bnode* x){
-    return x->left->height = x->right->height;
+    return x->left->height - x->right->height;
 }
 
 bool AVLbalanced(bnode* x){
